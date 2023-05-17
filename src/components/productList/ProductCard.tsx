@@ -1,4 +1,4 @@
-import {productMock} from '../../mock/productListMock'
+import {productMock, productListMock} from '../../mock/productListMock'
 import ShoppingCartIcon from '../Icons'
 
 const ProductCard = () => {
@@ -13,7 +13,7 @@ const ProductCard = () => {
                             <p className='font-semibold text-gray-400'>Price</p>
                             <p className='font-bold text-lg'>${productMock.price}</p>
                         </div>
-                        <a className='cursor-pointer p-3 bg-blue-700 rounded-xl'>
+                        <a className='cursor-pointer p-3 bg-indigo-600 rounded-xl'>
                             <ShoppingCartIcon />
                         </a>
                     </div>
