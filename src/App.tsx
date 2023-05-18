@@ -1,11 +1,11 @@
 import './App.css'
-import ProductCard from './components/productList/ProductCard'
+import ProductList from './components/productList/ProductList'
 
 function App() {
 
   return (
     <div className='h-full w-full flex justify-center items-center'>
-      <ProductCard />
+      <ProductList />
     </div>
   )
 }
