@@ -3,15 +3,15 @@ import ShoppingCartIcon from '../Icons'
 import { type Product } from '../../types/productTypes'
 
 interface Props {
-    product: Product
+  product: Product
 }
 
-const ProductCard: React.FC<Props> = ({product}) => {
-    return (
+const ProductCard: React.FC<Props> = ({ product }) => {
+  return (
         <div className="p-2">
-            <div className="rounded-xl border-2 border-solid flex flex-col justify-center items-center w-full">
+            <div className="max-w-xs mx-auto bg-white rounded-lg shadow-md overflow-hidden">
                 <img className='rounded-t-xl' src={product.imgs[1]} alt={product.name} />
-                <div className='flex flex-col w-full p-2'>
+                <div className='flex flex-col w-full py-2 px-4'>
                     <p className='font-bold text-lg'>{product.name}</p>
                     <div className='flex flex-row items-center justify-between'>
                         <div className='flex flex-col justify-start'>
@@ -22,10 +22,10 @@ const ProductCard: React.FC<Props> = ({product}) => {
                             <ShoppingCartIcon />
                         </a>
                     </div>
-                </div>                
+                </div>
             </div>
         </div>
-    )
+  )
 }
 
 export default ProductCard
