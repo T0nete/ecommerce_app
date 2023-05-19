@@ -7,6 +7,7 @@ export interface Product {
   price: number
   description: string
   categoryId: CategoryId
+  size: string
 }
 
 export interface ProductList {

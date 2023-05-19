@@ -28,7 +28,8 @@ export const productMock: Product = {
   ],
   price: 100,
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies aliquam, quam sapien aliquet nunc, nec ultricies nisl nunc quis nunc.',
-  categoryId: 5
+  categoryId: 5,
+  size: 'M'
 }
 
 export const productListMock: Product[] = [
@@ -44,7 +45,8 @@ export const productListMock: Product[] = [
     ],
     price: 100,
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies aliquam, quam sapien aliquet nunc, nec ultricies nisl nunc quis nunc.',
-    categoryId: 5
+    categoryId: 5,
+    size: 'M'
   },
   {
     id: 2,
@@ -58,7 +60,8 @@ export const productListMock: Product[] = [
     ],
     price: 50,
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies aliquam, quam sapien aliquet nunc, nec ultricies nisl nunc quis nunc.',
-    categoryId: 1
+    categoryId: 1,
+    size: 'L'
   },
   {
     id: 3,
@@ -72,6 +75,7 @@ export const productListMock: Product[] = [
     ],
     price: 70,
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies aliquam, quam sapien aliquet nunc, nec ultricies nisl nunc quis nunc.',
-    categoryId: 6
+    categoryId: 6,
+    size: 'S'
   }
 ]

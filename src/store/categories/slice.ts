@@ -8,6 +8,9 @@ export const categorySlice = createSlice({
   initialState,
   reducers: {
     selectCategory: (state, action: PayloadAction<CategoryId>) => {
+      if (state === action.payload) {
+        return initialState
+      }
       return action.payload
     }
   }

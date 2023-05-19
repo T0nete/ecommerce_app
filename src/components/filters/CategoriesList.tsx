@@ -14,7 +14,7 @@ const CategoriesList: React.FC = () => {
   console.log('categorySelected', categorySelected)
 
   return (
-        <div className='flex flex-col w-full p-6'>
+        <div className='flex flex-col'>
             <h3 className='text-left font-semibold text-lg'>Category</h3>
             <div className='flex flex-col py-1 ml-8'>
                 {

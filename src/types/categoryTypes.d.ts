@@ -8,3 +8,10 @@ export interface Category {
 export interface CategoryList {
   categories: Category[]
 }
+
+export type FilterId = number
+
+export interface Filter {
+  id: FilterId
+  name: string
+}
