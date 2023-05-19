@@ -10,7 +10,7 @@ interface Props {
 const FilterByAction: React.FC<Props> = ({ filter }) => {
   const [isFilterSelected, setIsFilterSelected] = useState<boolean>(false)
 
-  const handleOnOpenCloseFilter = () => {
+  const handleDropDown = () => {
     setIsFilterSelected(!isFilterSelected)
   }
 
@@ -18,7 +18,7 @@ const FilterByAction: React.FC<Props> = ({ filter }) => {
     <div className='flex flex-col'>
         <div className='flex flex-row py-1 justify-between' key={filter.id}>
             <p className='font-semibold text-md'>{filter.name}</p>
-            <button onClick={() => { handleOnOpenCloseFilter() }}>
+            <button onClick={() => { handleDropDown() }}>
             {
                 !isFilterSelected ? <ArrowDownIcon /> : <ArrowUpIcon />
             }
@@ -26,9 +26,9 @@ const FilterByAction: React.FC<Props> = ({ filter }) => {
         </div>
         {
             isFilterSelected && (
-              filter.filters.map((filter) => {
+              filter.filters.map((filterBy) => {
                 return (
-                <CheckBoxFilter key={filter.id} filter={filter} />
+                    <CheckBoxFilter key={filterBy.id} id={filter.id} filter={filterBy} />
                 )
               })
             )

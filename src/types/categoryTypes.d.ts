@@ -10,10 +10,11 @@ export interface CategoryList {
 }
 
 export type FilterId = number
+export type FilterById = number
 export type SelectedFilterType = boolean
 
 export interface FilterBy {
-  id: FilterId
+  id: FilterById
   value: string
 }
 
