@@ -1,5 +1,5 @@
 import React from 'react'
-import ShoppingCartIcon from '../Icons'
+import { ShoppingCartIcon } from '../Icons'
 import { type Product } from '../../types/productTypes'
 
 interface Props {

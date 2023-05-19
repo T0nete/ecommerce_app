@@ -11,8 +11,6 @@ const CategoriesList: React.FC = () => {
     dispatch(selectCategory(id))
   }
 
-  console.log('categorySelected', categorySelected)
-
   return (
         <div className='flex flex-col'>
             <h3 className='text-left font-semibold text-lg'>Category</h3>

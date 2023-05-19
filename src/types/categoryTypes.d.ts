@@ -10,8 +10,18 @@ export interface CategoryList {
 }
 
 export type FilterId = number
+export type SelectedFilterType = boolean
 
-export interface Filter {
+export interface FilterBy {
+  id: FilterId
+  value: string
+}
+
+export interface FilterGroup {
   id: FilterId
   name: string
+  selected: boolean
+  filters: FilterBy[]
 }
+
+export interface FilterListMock extends Array<FilterGroup> {}
