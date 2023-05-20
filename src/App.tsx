@@ -6,7 +6,7 @@ import FilterBySection from './components/filters/FilterBySection'
 function App () {
   return (
     <div className='flex'>
-      <aside className='w-1/4 h-screen bg-gray-100 p-6 flex flex-col'>
+      <aside className='w-1/4 h-screen bg-gray-100 p-6 flex flex-col divide-y-2'>
         <CategoriesList />
         <FilterBySection />
       </aside>

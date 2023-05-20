@@ -4,7 +4,7 @@ import FilterByAction from './FilterByAction'
 const FilterBySection: React.FC = () => {
   return (
     <div className='flex flex-col'>
-        <h3 className='text-left font-semibold text-md py-1'>Filter by:</h3>
+        <h3 className='text-left font-semibold text-md py-2'>Filter by:</h3>
         {
           filterListMock.map((filter) => {
             return (

@@ -1,17 +1,27 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
-import { type CategoryId } from '../../types/categoryTypes'
+import { type Category } from '../../types/categoryTypes'
 
-const initialState: CategoryId = -1
+interface CategoryFilterState {
+  category: Category | null
+}
+
+const initialState: CategoryFilterState = {
+  category: null
+}
 
 export const categorySlice = createSlice({
   name: 'categories',
   initialState,
   reducers: {
-    selectCategory: (state, action: PayloadAction<CategoryId>) => {
-      if (state === action.payload) {
-        return initialState
+    selectCategory: (state, action: PayloadAction<Category>) => {
+      if (action.payload.id === state.category?.id) return { ...state, category: null }
+      return {
+        ...state,
+        category: {
+          id: action.payload.id,
+          name: action.payload.name
+        }
       }
-      return action.payload
     }
   }
 })

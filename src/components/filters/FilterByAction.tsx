@@ -22,13 +22,11 @@ const FilterByAction: React.FC<Props> = ({ filter }) => {
           className='flex flex-row py-1 justify-between'
           key={filter.id}
           onClick={() => { handleDropDown() }}
-          >
+        >
             <p className='font-semibold text-md'>{filter.name}</p>
-            {/* <button onClick={() => { handleDropDown() }}> */}
-            {
+              {
                 !isFilterSelected ? <ArrowDownIcon /> : <ArrowUpIcon />
-            }
-            {/* </button> */}
+              }
         </div>
         {
             isFilterSelected && (
@@ -45,10 +43,6 @@ const FilterByAction: React.FC<Props> = ({ filter }) => {
                   default:
                     return null
                 }
-
-                // return (
-                //     <FilterByActionPrice key={filterBy.id} id={filter.id} filter={filterBy} />
-                // )
               })
             )
         }
