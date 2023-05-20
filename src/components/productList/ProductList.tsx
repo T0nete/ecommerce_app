@@ -26,15 +26,15 @@ const ProductList: React.FC = () => {
   }
 
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col w-full'>
       {
         categorySelected.category === null
           ? (
-          <h3 className='text-left font-extrabold text-3xl p-4'>Newest Products</h3>
+              <h3 className='text-left font-extrabold text-3xl p-4'>Newest Products</h3>
             )
-          : categorySelected.category?.name !== null && (
-          <h3 className='text-left font-extrabold text-3xl p-4'>{categorySelected.category?.name}</h3>
-          )
+          : (
+              <h3 className='text-left font-extrabold text-3xl p-4'>{categorySelected.category?.name}</h3>
+            )
       }
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3'>
         {
