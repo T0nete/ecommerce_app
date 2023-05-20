@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { type FilterGroup } from '../../types/categoryTypes'
+import { type FilterPriceType, type FilterGroup } from '../../types/categoryTypes'
+import { FILTERSBY_TYPE } from '../../types/constants'
 import { ArrowDownIcon, ArrowUpIcon } from '../Icons'
-import CheckBoxFilter from './CheckBoxFilter'
+import FilterByActionPrice from './FilterByActionPrice'
 
 interface Props {
   filter: FilterGroup
@@ -10,7 +11,7 @@ interface Props {
 const FilterByAction: React.FC<Props> = ({ filter }) => {
   const [isFilterSelected, setIsFilterSelected] = useState<boolean>(false)
 
-  const handleDropDown = () => {
+  const handleDropDown = (): void => {
     setIsFilterSelected(!isFilterSelected)
   }
 
@@ -27,9 +28,18 @@ const FilterByAction: React.FC<Props> = ({ filter }) => {
         {
             isFilterSelected && (
               filter.filters.map((filterBy) => {
-                return (
-                    <CheckBoxFilter key={filterBy.id} id={filter.id} filter={filterBy} />
-                )
+                switch (filter.id) {
+                  case FILTERSBY_TYPE.PRICE:
+                    return (
+                        <FilterByActionPrice key={filterBy.id} id={filter.id} filter={filterBy as FilterPriceType} />
+                    )
+                  default:
+                    return null
+                }
+
+                // return (
+                //     <FilterByActionPrice key={filterBy.id} id={filter.id} filter={filterBy} />
+                // )
               })
             )
         }

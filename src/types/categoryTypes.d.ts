@@ -13,7 +13,18 @@ export type FilterId = number
 export type FilterById = number
 export type SelectedFilterType = boolean
 
-export interface FilterBy {
+export interface FilterPriceType {
+  id: FilterById
+  minValue: number
+  maxValue: number
+}
+
+export interface FilterSizeType {
+  id: FilterById
+  value: string
+}
+
+export interface FilterColorType {
   id: FilterById
   value: string
 }
@@ -22,7 +33,7 @@ export interface FilterGroup {
   id: FilterId
   name: string
   selected: boolean
-  filters: FilterBy[]
+  filters: FilterSizeType[] | FilterPriceType[] | FilterColorType[]
 }
 
 export interface FilterListMock extends Array<FilterGroup> {}

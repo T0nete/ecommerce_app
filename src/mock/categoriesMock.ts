@@ -1,4 +1,5 @@
 import { type Category, type FilterListMock } from '../types/categoryTypes'
+import { FILTERSBY_TYPE } from '../types/constants'
 
 export const categoriesListMock: Category[] = [
   {
@@ -29,26 +30,29 @@ export const categoriesListMock: Category[] = [
 
 export const filterListMock: FilterListMock = [
   {
-    id: 1,
+    id: FILTERSBY_TYPE.PRICE,
     name: 'Price',
     selected: false,
     filters: [
       {
         id: 1,
-        value: '0-50'
+        minValue: 0,
+        maxValue: 50
       },
       {
         id: 2,
-        value: '50-100'
+        minValue: 50,
+        maxValue: 100
       },
       {
         id: 3,
-        value: '100-150'
+        minValue: 100,
+        maxValue: 150
       }
     ]
   },
   {
-    id: 2,
+    id: FILTERSBY_TYPE.SIZE,
     name: 'Size',
     selected: false,
     filters: [
@@ -75,7 +79,7 @@ export const filterListMock: FilterListMock = [
     ]
   },
   {
-    id: 3,
+    id: FILTERSBY_TYPE.COLOR,
     name: 'Color',
     selected: false,
     filters: [

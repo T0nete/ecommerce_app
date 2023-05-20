@@ -4,11 +4,17 @@ import ProductCard from './ProductCard'
 
 const ProductList: React.FC = () => {
   const categorySelected = useAppSelector(state => state.categories)
+  const filterPrice = useAppSelector(state => state.filters.filterPrice)
 
-  const productsList = categorySelected === -1
+  let productsList = categorySelected === -1
     ? productListMock
     : productListMock.filter((product) => product.categoryId === categorySelected)
 
+  if (filterPrice != null) {
+    productsList = productsList.filter((product) => {
+      return product.price >= filterPrice.minValue && product.price < filterPrice.maxValue
+    })
+  }
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3'>
         {

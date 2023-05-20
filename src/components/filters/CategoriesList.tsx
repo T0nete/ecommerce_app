@@ -7,7 +7,7 @@ const CategoriesList: React.FC = () => {
   const categorySelected = useAppSelector(state => state.categories)
   const dispatch = useAppDispatch()
 
-  const handleSelectCategory = (id: CategoryId) => {
+  const handleSelectCategory = (id: CategoryId): void => {
     dispatch(selectCategory(id))
   }
 

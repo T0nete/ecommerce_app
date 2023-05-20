@@ -1,41 +1,55 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
-import { filterListMock } from '../../mock/categoriesMock'
-import { type FilterBy, type FilterId } from '../../types/categoryTypes'
+import { type FilterPriceType, type FilterSizeType, type FilterColorType } from '../../types/categoryTypes'
 
-const initialState: FilterBy[] = []
+interface FilterState {
+  filterPrice?: FilterPriceType | null
+  filterSize?: FilterSizeType | null
+  filterColor?: FilterColorType | null
+}
+
+const initialState: FilterState = {
+  filterPrice: null,
+  filterSize: null,
+  filterColor: null
+}
 
 export const filterSlice = createSlice({
   name: 'filters',
   initialState,
   reducers: {
-    // openCloseFilter: (state, action: PayloadAction<FilterId>) => {
-    //   console.log('id', action.payload)
-    //   return state.map(filter => {
-    //     if (filter.id === action.payload) {
-    //       return {
-    //         ...filter,
-    //         selected: !filter.selected
-    //       }
-    //     }
-    //     return filter
-    //   })
-    // }
-    setFilter: (state, action: PayloadAction<FilterBy>) => {
-      const { id, value } = action.payload
-      console.log('id', id)
-      console.log('value', value)
-      return state.map(filter => {
-        if (filter.id === id) {
-          return {
-            ...filter,
-            value
-          }
+    setFilterPrice: (state, action: PayloadAction<FilterPriceType | null>) => {
+      if (action.payload === null) return { ...state, filterPrice: null }
+      return {
+        ...state,
+        filterPrice: {
+          id: action.payload.id,
+          minValue: action.payload.minValue,
+          maxValue: action.payload.maxValue
         }
-        return filter
-      })
+      }
+    },
+    setFilterSize: (state, action: PayloadAction<FilterSizeType>) => {
+      const { id, value } = action.payload
+      return {
+        ...state,
+        filterSize: {
+          id,
+          value
+        }
+      }
+    },
+    setFilterColor: (state, action: PayloadAction<FilterColorType>) => {
+      const { id, value } = action.payload
+      return {
+        ...state,
+        filterColor: {
+          id,
+          value
+        }
+      }
     }
   }
 })
 
 export default filterSlice.reducer
-export const { setFilter } = filterSlice.actions
+export const { setFilterPrice, setFilterSize, setFilterColor } = filterSlice.actions
