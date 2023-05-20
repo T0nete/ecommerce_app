@@ -28,13 +28,13 @@ export const filterSlice = createSlice({
         }
       }
     },
-    setFilterSize: (state, action: PayloadAction<FilterSizeType>) => {
-      const { id, value } = action.payload
+    setFilterSize: (state, action: PayloadAction<FilterSizeType | null>) => {
+      if (action.payload === null) return { ...state, filterSize: null }
       return {
         ...state,
         filterSize: {
-          id,
-          value
+          id: action.payload.id,
+          value: action.payload.value
         }
       }
     },

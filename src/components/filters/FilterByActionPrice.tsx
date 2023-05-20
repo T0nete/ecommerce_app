@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { type FilterPriceType, type FilterId, type FilterById } from '../../types/categoryTypes'
+import React from 'react'
+import { type FilterPriceType, type FilterId } from '../../types/categoryTypes'
 import { useAppDispatch, useAppSelector } from '../../hooks/store'
 import { setFilterPrice } from '../../store/filters/slice'
 
@@ -12,34 +12,31 @@ const FilterByActionPrice: React.FC<Props> = ({ id, filter }) => {
   const filterPrice = useAppSelector(state => state.filters.filterPrice)
   const dispatch = useAppDispatch()
 
-  const [selectedFilter, setSelectedFilter] = useState<FilterById | null>(null)
-
   const handleSelectFilter = (filterSel: FilterPriceType): void => {
     console.log('selectedFilter', filterPrice?.id)
     console.log('filterSel', filterSel)
-    console.log('compare', filterSel.id === selectedFilter)
 
     if (filterSel.id === filterPrice?.id) {
-      setSelectedFilter(null)
       dispatch(setFilterPrice(null))
     } else {
-      setSelectedFilter(filterSel.id)
       dispatch(setFilterPrice(filterSel))
     }
   }
 
   return (
-        <div className='flex flex-row'>
+        <div
+          className='flex flex-row py-1'
+          onClick={() => { handleSelectFilter(filter) }}
+        >
             <input
               onChange={() => { }}
-              onClick={() => { handleSelectFilter(filter) }}
               type="radio"
               id={id.toString()}
-              name='price'
+              name={id.toString()}
               value={filter.maxValue}
               checked={filterPrice?.id === filter.id}
             />
-            <p className='px-2 text-sm font-semibold text-gray-500'>{filter.minValue} - {filter.maxValue}</p>
+            <p className='px-2 text-sm font-semibold text-gray-500'>${filter.minValue} - {filter.maxValue}</p>
         </div>
   )
 }
