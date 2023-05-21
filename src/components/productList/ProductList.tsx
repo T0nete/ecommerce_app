@@ -1,6 +1,7 @@
 import { useAppSelector } from '../../hooks/store'
 import { productListMock } from '../../mock/productListMock'
 import ProductCard from './ProductCard'
+import { Link } from 'react-router-dom'
 
 const ProductList: React.FC = () => {
   const categorySelected = useAppSelector(state => state.categories)
@@ -40,7 +41,12 @@ const ProductList: React.FC = () => {
         {
             productsList.map((product) => {
               return (
-                <ProductCard key={product.id} product={product} />
+                <div key={product.id}>
+                  <Link id={product.id.toString()} to={`/product/${product.id}`} >
+                    <ProductCard key={product.id} product={product} />
+                  </Link>
+                </div>
+
               )
             })
         }

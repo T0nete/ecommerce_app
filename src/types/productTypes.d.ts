@@ -1,7 +1,9 @@
 import { type CategoryId } from './categoryTypes'
 
+export type ProductId = number
+
 export interface Product {
-  id: number
+  id: ProductId
   name: string
   imgs: string[]
   price: number
