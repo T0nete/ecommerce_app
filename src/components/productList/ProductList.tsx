@@ -8,8 +8,6 @@ const ProductList: React.FC = () => {
   const filterPrice = useAppSelector(state => state.filters.filterPrice)
   const filterSize = useAppSelector(state => state.filters.filterSize)
 
-  console.log(categorySelected)
-
   let productsList = categorySelected.category === null
     ? productListMock
     : productListMock.filter((product) => product.categoryId === categorySelected.category?.id)

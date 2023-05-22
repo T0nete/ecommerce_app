@@ -13,9 +13,6 @@ const FilterByActionPrice: React.FC<Props> = ({ id, filter }) => {
   const dispatch = useAppDispatch()
 
   const handleSelectFilter = (filterSel: FilterPriceType): void => {
-    console.log('selectedFilter', filterPrice?.id)
-    console.log('filterSel', filterSel)
-
     if (filterSel.id === filterPrice?.id) {
       dispatch(setFilterPrice(null))
     } else {
