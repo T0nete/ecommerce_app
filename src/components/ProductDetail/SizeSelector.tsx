@@ -6,8 +6,8 @@ interface Props {
   product: Product
 }
 
-const SizeSelector: React.FC<Props> = (productItem) => {
-  const { product } = productItem
+const SizeSelector: React.FC<Props> = ({ product }) => {
+  // const { product } = productItem
 
   const [selectedSize, setSelectedSize] = useState<SizeType>(SIZE_TYPE.S)
 
