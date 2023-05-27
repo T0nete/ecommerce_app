@@ -28,7 +28,7 @@ const ProductDetail: React.FC = () => {
     }
   }, [])
 
-  const goBack = () => {
+  const goBack = (): void => {
     navigate(-1)
   }
 
@@ -61,8 +61,7 @@ const ProductDetail: React.FC = () => {
             className='flex items-center justify-center py-2 px-4 bg-indigo-500 rounded-md shadow-md'
             onClick={() => { goBack() }}
           >
-            <BackArrowIcon />
-            Back
+            <p className='text-white px-1'>Back</p>
           </button>
         </footer>
       </div>
