@@ -8,15 +8,6 @@ import './index.css'
 import ProductDetail from './components/ProductDetail/ProductDetail'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
-// const RouterApp = () => {
-//   return (
-//     <Router>
-//       <Route path='/' component={App} />
-//       <Route path='/product/:id' component={ProductDetail} />
-//     </Router>
-//   )
-// }
-
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>

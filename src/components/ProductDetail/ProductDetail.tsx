@@ -1,31 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import useProduct from '../../hooks/useProduct'
 import ImagesProduct from './ImagesProduct'
 import SizeSelector from './SizeSelector'
 import ButtonsDetail from './ButtonsDetail'
 import Header from '../Header/Header'
-import { BackArrowIcon } from '../Icons'
+import useResize from '../../hooks/useResize'
+import { useAppSelector } from '../../hooks/store'
 
 const ProductDetail: React.FC = () => {
   const navigate = useNavigate()
   const { id } = useParams<{ id: string }>()
-  const [isSmallScreen, setIsSmallScreen] = useState(false)
   const { product, loading, getProduct } = useProduct()
+
+  useResize()
+  const isSmallScreen = useAppSelector(state => state.screenSize)
 
   useEffect(() => {
     getProduct(Number(id))
-
-    const handleResize = (): void => {
-      setIsSmallScreen(window.innerWidth <= 768)
-    }
-
-    window.addEventListener('resize', handleResize)
-    handleResize()
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
   }, [])
 
   const goBack = (): void => {

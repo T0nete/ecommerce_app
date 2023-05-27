@@ -3,8 +3,11 @@ import ProductList from './components/productList/ProductList'
 import CategoriesList from './components/filters/CategoriesList'
 import FilterBySection from './components/filters/FilterBySection'
 import Header from './components/Header/Header'
+import useResize from './hooks/useResize'
 
-function App () {
+function App (): JSX.Element {
+  useResize()
+
   return (
     <div className='flex flex-col'>
       <Header />

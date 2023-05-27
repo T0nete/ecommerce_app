@@ -1,11 +1,16 @@
 import { Link } from 'react-router-dom'
 import { HeartIcon, MenuIcon, ShoppingCartIconBlack } from '../Icons'
+import { useAppSelector } from '../../hooks/store'
 
 const Header: React.FC = () => {
+  const isSmallScreen = useAppSelector(state => state.screenSize)
+
   return (
     <div className="w-full h-14 border-b-2 p-4 items-center  justify-center">
         <div className='flex flex-row justify-between'>
-            <MenuIcon />
+            <div className={`${isSmallScreen ? '' : 'invisible'}`}>
+                <MenuIcon />
+            </div>
             <div className='flex flex-row'>
                 <Link to='/'>
                     <p className='font-semibold text-lg'>Home</p>
