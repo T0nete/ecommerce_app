@@ -33,7 +33,7 @@ const ProductDetail: React.FC = () => {
           <div className='flex flex-col w-full sm:w-5/12 py-1 px-4 items-start'>
             <ImagesProduct imgs={product.imgs} isSmallScreen={isSmallScreen} />
           </div>
-          <div className='flex flex-col w-full sm:w-7/12 py-2 px-4 items-start gap-1'>
+          <div className={`flex flex-col w-full sm:w-7/12 px-4 items-start gap-1 ${isSmallScreen ? 'py-2' : ''}`}>
               <h1 className='font-bold text-3xl'>{product.name}</h1>
               <p className='font-bold text-lg p-1'>${product.price}</p>
               <SizeSelector />
