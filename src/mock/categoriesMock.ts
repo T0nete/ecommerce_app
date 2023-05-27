@@ -1,5 +1,5 @@
 import { type Category, type FilterListMock } from '../types/categoryTypes'
-import { FILTERSBY_TYPE } from '../types/constants'
+import { FILTERSBY_TYPE, SIZE_TYPE } from '../types/constants'
 
 export const categoriesListMock: Category[] = [
   {
@@ -58,23 +58,23 @@ export const filterListMock: FilterListMock = [
     filters: [
       {
         id: 1,
-        value: 'XS'
+        value: SIZE_TYPE.XS
       },
       {
         id: 2,
-        value: 'S'
+        value: SIZE_TYPE.S
       },
       {
         id: 3,
-        value: 'M'
+        value: SIZE_TYPE.M
       },
       {
         id: 4,
-        value: 'L'
+        value: SIZE_TYPE.L
       },
       {
         id: 5,
-        value: 'XL'
+        value: SIZE_TYPE.XL
       }
     ]
   },
