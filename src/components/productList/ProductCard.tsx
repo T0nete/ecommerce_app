@@ -1,8 +1,6 @@
 import React from 'react'
-import { ShoppingCartIcon } from '../Icons'
+import { ShoppingCartIconWhite } from '../Icons'
 import { type Product } from '../../types/productTypes'
-import { Link } from 'react-router-dom'
-
 interface Props {
   product: Product
 }
@@ -20,7 +18,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
                             <p className='font-bold text-lg'>${product.price}</p>
                         </div>
                         <button className='cursor-pointer p-3 bg-indigo-600 rounded-xl'>
-                            <ShoppingCartIcon />
+                            <ShoppingCartIconWhite />
                         </button>
                     </div>
                 </div>
