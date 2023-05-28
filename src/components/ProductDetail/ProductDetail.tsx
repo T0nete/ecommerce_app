@@ -7,6 +7,7 @@ import ButtonsDetail from './ButtonsDetail'
 import Header from '../Header/Header'
 import useResize from '../../hooks/useResize'
 import { useAppSelector } from '../../hooks/store'
+import { SCREEN_SIZE } from '../../types/constants'
 
 const ProductDetail: React.FC = () => {
   const navigate = useNavigate()
@@ -26,15 +27,16 @@ const ProductDetail: React.FC = () => {
 
   return (
     <div className='flex flex-col'>
-      <Header showMenu={false}/>
-      <div className={`mx-auto ${isSmallScreen ? 'w-full' : 'md:w-10/12'}`}>
+      <Header showMenu={false} isSmallScreen={isSmallScreen}/>
+
+      <div className={`mx-auto ${isSmallScreen !== SCREEN_SIZE.LARGE ? 'w-4/5' : 'w-8/12'}`}>
         {loading && <p>Loading...</p>}
         {(product !== null) && (
           <div className='flex p-2 w-full flex-col sm:flex-row'>
             <div className='flex flex-col w-full sm:w-5/12 py-1 px-4 items-start'>
-              <ImagesProduct imgs={product.imgs} isSmallScreen={isSmallScreen} />
+              <ImagesProduct imgs={product.imgs} isSmallScreen={isSmallScreen}/>
             </div>
-            <div className={`flex flex-col w-full sm:w-7/12 px-4 items-start gap-1 ${isSmallScreen ? 'py-2' : ''}`}>
+            <div className={`flex flex-col w-full sm:w-7/12 px-4 items-start gap-1 ${isSmallScreen === SCREEN_SIZE.MEDIUM ? 'py-2' : ''}`}>
                 <h1 className='font-bold text-3xl'>{product.name}</h1>
                 <p className='font-bold text-lg p-1'>${product.price}</p>
                 <SizeSelector />

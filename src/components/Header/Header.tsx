@@ -1,22 +1,21 @@
 import { Link } from 'react-router-dom'
 import { HeartIcon, MenuIcon, ShoppingCartIconBlack } from '../Icons'
-import { useAppSelector } from '../../hooks/store'
-import { SCREEN_SIZE } from '../../store/screenSize/slice'
-import { useEffect } from 'react'
+import { SCREEN_SIZE, type ScreenSizeState } from '../../types/constants'
 
 interface Props {
   showMenu: boolean
+  isSmallScreen: ScreenSizeState
+  handleOpenMenu?: () => void
 }
 
-const Header: React.FC<Props> = ({ showMenu }) => {
-  const isSmallScreen = useAppSelector(state => state.screenSize)
-  useEffect(() => {
-    console.log(isSmallScreen)
-  }, [isSmallScreen])
+const Header: React.FC<Props> = ({ showMenu, isSmallScreen, handleOpenMenu }) => {
   return (
     <div className="w-full h-14 border-b-2 p-4 items-center  justify-center">
         <div className='flex flex-row justify-between'>
-            <div className={`${(isSmallScreen === SCREEN_SIZE.SMALL && showMenu) ? '' : 'invisible'}`}>
+            <div
+                onClick={() => { if (handleOpenMenu != null) handleOpenMenu() }}
+                className={`${(isSmallScreen === SCREEN_SIZE.XSMALL && showMenu) ? 'cursor-pointer' : 'invisible'}`}
+            >
                 <MenuIcon />
             </div>
             <div className='flex flex-row'>
