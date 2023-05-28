@@ -1,14 +1,22 @@
 import { Link } from 'react-router-dom'
 import { HeartIcon, MenuIcon, ShoppingCartIconBlack } from '../Icons'
 import { useAppSelector } from '../../hooks/store'
+import { SCREEN_SIZE } from '../../store/screenSize/slice'
+import { useEffect } from 'react'
 
-const Header: React.FC = () => {
+interface Props {
+  showMenu: boolean
+}
+
+const Header: React.FC<Props> = ({ showMenu }) => {
   const isSmallScreen = useAppSelector(state => state.screenSize)
-
+  useEffect(() => {
+    console.log(isSmallScreen)
+  }, [isSmallScreen])
   return (
     <div className="w-full h-14 border-b-2 p-4 items-center  justify-center">
         <div className='flex flex-row justify-between'>
-            <div className={`${isSmallScreen ? '' : 'invisible'}`}>
+            <div className={`${(isSmallScreen === SCREEN_SIZE.SMALL && showMenu) ? '' : 'invisible'}`}>
                 <MenuIcon />
             </div>
             <div className='flex flex-row'>
@@ -17,18 +25,18 @@ const Header: React.FC = () => {
                 </Link>
             </div>
             <div className='flex flex-row gap-2'>
-                <p className='flex flex-row'>
+                <div className='flex flex-row'>
                     <div className='px-1'>
                         <HeartIcon />
                     </div>
-                    Wishlist
-                </p>
-                <p className='flex flex-row'>
+                    <p>Wishlist</p>
+                </div>
+                <div className='flex flex-row'>
                     <div className='px-1'>
                         <ShoppingCartIconBlack />
                     </div>
-                    Cart
-                </p>
+                    <p>Cart</p>
+                </div>
             </div>
         </div>
     </div>

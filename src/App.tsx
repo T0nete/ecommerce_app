@@ -10,7 +10,7 @@ function App (): JSX.Element {
 
   return (
     <div className='flex flex-col'>
-      <Header />
+      <Header showMenu={true} />
       <div className='flex'>
         <aside className='w-1/4 h-screen bg-gray-100 p-6 flex flex-col divide-y-2'>
           <CategoriesList />

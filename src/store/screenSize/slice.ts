@@ -1,14 +1,32 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
+import produce from 'immer'
 
-const initialState: boolean = false
+export const SCREEN_SIZE = {
+  SMALL: 'small',
+  MEDIUM: 'medium',
+  LARGE: 'large'
+}
+
+export type ScreenSizeType = typeof SCREEN_SIZE.SMALL[keyof typeof SCREEN_SIZE.SMALL]
+
+const initialState: ScreenSizeType = SCREEN_SIZE.SMALL
 
 export const screenSizeSlice = createSlice({
   name: 'screenSize',
   initialState,
   reducers: {
-    setScreenSize: (state, action: PayloadAction<number>) => {
-      return action.payload <= 768
-    }
+    setScreenSize: produce((state, action: PayloadAction<number>) => {
+      if (action.payload <= 576) {
+        console.log('SMALL')
+        state = 'SMALL'
+      } else if (action.payload <= 768) {
+        console.log('MEDIUM')
+        state = 'MEDIUM'
+      } else {
+        console.log('LARGE')
+        state = 'LARGE'
+      }
+    })
   }
 })
 

@@ -26,7 +26,7 @@ const ProductDetail: React.FC = () => {
 
   return (
     <div className='flex flex-col'>
-      <Header />
+      <Header showMenu={false}/>
       <div className={`mx-auto ${isSmallScreen ? 'w-full' : 'md:w-10/12'}`}>
         {loading && <p>Loading...</p>}
         {(product !== null) && (
