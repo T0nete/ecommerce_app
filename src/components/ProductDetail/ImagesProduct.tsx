@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { ArrowLeftIcon, ArrowRightIcon } from '../Icons'
+import { SCREEN_SIZE, type ScreenSizeState } from '../../types/constants'
 
 interface Props {
   imgs: string[]
-  isSmallScreen: boolean
+  isSmallScreen: ScreenSizeState
 }
 
 const ImagesProduct: React.FC<Props> = ({ imgs, isSmallScreen }) => {
@@ -12,7 +13,7 @@ const ImagesProduct: React.FC<Props> = ({ imgs, isSmallScreen }) => {
 
   useEffect(() => {
     setSelectedImg(imgs[0])
-    if (isSmallScreen) {
+    if (isSmallScreen === SCREEN_SIZE.MEDIUM) {
       setImgsList(imgs)
     } else {
       const imgsList = imgs.filter((img) => img !== imgs[0])
@@ -49,7 +50,7 @@ const ImagesProduct: React.FC<Props> = ({ imgs, isSmallScreen }) => {
             className='rounded-xl object-contain shadow-lg'
         />
         {
-          isSmallScreen && (
+          (isSmallScreen === SCREEN_SIZE.SMALL || isSmallScreen === SCREEN_SIZE.XSMALL) && (
             <div className='absolute inset-0 flex items-center justify-between p-1'>
               <button
                 onClick={() => { handleLeftRightImgClick(false) }}
@@ -66,7 +67,7 @@ const ImagesProduct: React.FC<Props> = ({ imgs, isSmallScreen }) => {
         }
       </div>
         {
-          !isSmallScreen && (
+          !(isSmallScreen === SCREEN_SIZE.SMALL || isSmallScreen === SCREEN_SIZE.XSMALL) && (
             <div className='flex flex-row justify-between p-2'>
               {
                 imgsList.map((img) => {

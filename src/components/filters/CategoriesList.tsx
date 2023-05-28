@@ -13,31 +13,31 @@ const CategoriesList: React.FC = () => {
 
   return (
     <div className='flex flex-col'>
-        <h3 className='text-left font-semibold text-lg'>Category</h3>
-        <div className='flex flex-col py-2 ml-8'>
-            {
-                categoriesListMock.map((category) => {
-                  return (
-                    <div key={category.id} className='text-left py-1'>
-                        {
-                            categorySelected.category?.id === category.id && (
-                                <button onClick={() => { handleSelectCategory(category) }}>
-                                    <p className= {'font-semibold text-purple-600'}>{category.name}</p>
-                                </button>
-                            )
-                        }
-                        {
-                            categorySelected.category?.id !== category.id && (
-                                <button onClick={() => { handleSelectCategory(category) }}>
-                                    <p className= {'font-semibold text-gray-500'}>{category.name}</p>
-                                </button>
-                            )
-                        }
-                    </div>
-                  )
-                })
-            }
-        </div>
+      <h3 className='text-left font-semibold text-lg'>Category</h3>
+      <div className='flex flex-col py-2 ml-6'>
+          {
+            categoriesListMock.map((category) => {
+              return (
+                <div key={category.id} className='text-left py-1'>
+                  {
+                    categorySelected.category?.id === category.id && (
+                        <button onClick={() => { handleSelectCategory(category) }}>
+                            <p className= {'font-semibold text-purple-600'}>{category.name}</p>
+                        </button>
+                    )
+                  }
+                  {
+                    categorySelected.category?.id !== category.id && (
+                        <button onClick={() => { handleSelectCategory(category) }}>
+                            <p className= {'font-semibold text-gray-500'}>{category.name}</p>
+                        </button>
+                    )
+                  }
+                </div>
+              )
+            })
+          }
+      </div>
     </div>
   )
 }
