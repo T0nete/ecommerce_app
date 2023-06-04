@@ -2,11 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { store } from './store'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import App from './App.tsx'
 import './index.css'
-
 import ProductDetail from './components/ProductDetail/ProductDetail'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import WishList from './components/WishList/WishList'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
@@ -15,6 +15,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <Routes>
           <Route path='/' element={<App />} />
           <Route path='/product/:id' element={<ProductDetail />} />
+          <Route path='/wishlist' element={<WishList />} />
         </Routes>
       </Router>
     </Provider>

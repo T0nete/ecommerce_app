@@ -6,11 +6,13 @@ import SizeSelector from './SizeSelector'
 import ButtonsDetail from './ButtonsDetail'
 import Header from '../Header/Header'
 import useResize from '../../hooks/useResize'
-import { useAppSelector } from '../../hooks/store'
+import { useAppDispatch, useAppSelector } from '../../hooks/store'
 import { SCREEN_SIZE } from '../../types/constants'
+import { addProductWishList } from '../../store/wishList/slice'
 
 const ProductDetail: React.FC = () => {
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
   const { id } = useParams<{ id: string }>()
   const { product, loading, getProduct } = useProduct()
 
@@ -23,6 +25,12 @@ const ProductDetail: React.FC = () => {
 
   const goBack = (): void => {
     navigate(-1)
+  }
+
+  const handleAddToWishList = (): void => {
+    if (product != null) {
+      dispatch(addProductWishList(product))
+    }
   }
 
   return (
@@ -41,7 +49,7 @@ const ProductDetail: React.FC = () => {
                 <p className='font-bold text-lg p-1'>${product.price}</p>
                 <SizeSelector />
                 <div className='py-4'>
-                  <ButtonsDetail />
+                  <ButtonsDetail addProductWishList={handleAddToWishList}/>
                 </div>
                 <div className='flex flex-col'>
                   <p className='text-start font-semibold text-md text-gray-400 py-1'>Description</p>

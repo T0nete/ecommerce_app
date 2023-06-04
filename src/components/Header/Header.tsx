@@ -24,12 +24,14 @@ const Header: React.FC<Props> = ({ showMenu, isSmallScreen, handleOpenMenu }) =>
                 </Link>
             </div>
             <div className='flex flex-row gap-2'>
-                <div className='flex flex-row'>
-                    <div className='px-1'>
-                        <HeartIcon />
+                <Link to={'/wishlist'}>
+                    <div className='flex flex-row'>
+                        <div className='px-1'>
+                            <HeartIcon />
+                        </div>
+                        <p>Wishlist</p>
                     </div>
-                    <p>Wishlist</p>
-                </div>
+                </Link>
                 <div className='flex flex-row'>
                     <div className='px-1'>
                         <ShoppingCartIconBlack />

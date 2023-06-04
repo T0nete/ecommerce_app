@@ -1,10 +1,17 @@
 import React from 'react'
 import { HeartIcon, ShoppingCartIconWhite } from '../Icons'
 
-const ButtonsDetail: React.FC = () => {
+interface Props {
+  addProductWishList: () => void
+}
+
+const ButtonsDetail: React.FC<Props> = ({ addProductWishList }) => {
   return (
     <div className='flex flex-row'>
-        <button className='flex items-center rounded-md p-2 bg-gray-200 shadow-md'>
+        <button
+          onClick={() => { addProductWishList() }}
+          className='flex items-center rounded-md p-2 bg-gray-200 shadow-md'
+        >
           <p className='flex flex-row font-semibold text-sm'>
             <span className='pr-1'>{<HeartIcon />} </span>
             WISHLIST
