@@ -33,10 +33,14 @@ const Header: React.FC<Props> = ({ showMenu, isSmallScreen, handleOpenMenu }) =>
                     </div>
                 </Link>
                 <div className='flex flex-row'>
-                    <div className='px-1'>
-                        <ShoppingCartIconBlack />
-                    </div>
-                    <p>Cart</p>
+                    <Link to={'/cart'}>
+                        <div className='flex flex-row'>
+                            <div className='px-1'>
+                                <ShoppingCartIconBlack />
+                            </div>
+                            <p>Cart</p>
+                        </div>
+                    </ Link>
                 </div>
             </div>
         </div>

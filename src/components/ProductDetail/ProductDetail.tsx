@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import useProduct from '../../hooks/useProduct'
 import ImagesProduct from './ImagesProduct'
@@ -9,12 +9,15 @@ import useResize from '../../hooks/useResize'
 import { useAppDispatch, useAppSelector } from '../../hooks/store'
 import { SCREEN_SIZE } from '../../types/constants'
 import { addProductWishList } from '../../store/wishList/slice'
+import { type ProductCart, addProductCart } from '../../store/cart/slice'
 
 const ProductDetail: React.FC = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const { id } = useParams<{ id: string }>()
   const { product, loading, getProduct } = useProduct()
+  const [selectedSize, setSelectedSize] = useState('')
+  const [errorSize, setErrorSize] = useState(false)
 
   useResize()
   const isSmallScreen = useAppSelector(state => state.screenSize)
@@ -33,6 +36,24 @@ const ProductDetail: React.FC = () => {
     }
   }
 
+  const handleSelectedSize = (size: string): void => {
+    setSelectedSize(size)
+  }
+
+  const handleAddProductToCart = (): void => {
+    if (selectedSize !== null && selectedSize.length > 0 && product != null) {
+      setErrorSize(false)
+      const addProduct: ProductCart = {
+        ...product,
+        size: selectedSize,
+        quantity: 0
+      }
+      dispatch(addProductCart(addProduct))
+    } else {
+      setErrorSize(true)
+    }
+  }
+
   return (
     <div className='flex flex-col'>
       <Header showMenu={false} isSmallScreen={isSmallScreen}/>
@@ -47,9 +68,16 @@ const ProductDetail: React.FC = () => {
             <div className={`flex flex-col w-full sm:w-7/12 px-4 items-start gap-1 ${isSmallScreen === SCREEN_SIZE.MEDIUM ? 'py-2' : ''}`}>
                 <h1 className='font-bold text-3xl'>{product.name}</h1>
                 <p className='font-bold text-lg p-1'>${product.price}</p>
-                <SizeSelector />
+                <SizeSelector
+                  selectedSize={selectedSize}
+                  handleSelectedSize={handleSelectedSize}
+                  errorSize={errorSize}
+                />
                 <div className='py-4'>
-                  <ButtonsDetail addProductWishList={handleAddToWishList}/>
+                  <ButtonsDetail
+                    addProductWishList={handleAddToWishList}
+                    handleAddProductToCart={handleAddProductToCart}
+                  />
                 </div>
                 <div className='flex flex-col'>
                   <p className='text-start font-semibold text-md text-gray-400 py-1'>Description</p>

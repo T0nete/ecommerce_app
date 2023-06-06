@@ -3,9 +3,10 @@ import { HeartIcon, ShoppingCartIconWhite } from '../Icons'
 
 interface Props {
   addProductWishList: () => void
+  handleAddProductToCart: () => void
 }
 
-const ButtonsDetail: React.FC<Props> = ({ addProductWishList }) => {
+const ButtonsDetail: React.FC<Props> = ({ addProductWishList, handleAddProductToCart }) => {
   return (
     <div className='flex flex-row'>
         <button
@@ -18,7 +19,10 @@ const ButtonsDetail: React.FC<Props> = ({ addProductWishList }) => {
           </p>
         </button>
         <div className='px-2'></div>
-        <button className='flex items-center rounded-md py-2 px-4 bg-indigo-500 shadow-md'>
+        <button
+          onClick={() => { handleAddProductToCart() }}
+          className='flex items-center rounded-md py-2 px-4 bg-indigo-500 shadow-md'
+        >
           <p className='flex flex-row text-white font-semibold text-sm'>
             <span className='pr-1'>{<ShoppingCartIconWhite />} </span>
             ADD TO CART
