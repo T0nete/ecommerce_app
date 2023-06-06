@@ -19,7 +19,6 @@ function App (): JSX.Element {
 
   const handleOpenMenu = (): void => {
     setOpenMenu(!openMenu)
-    console.log('openMenu', openMenu)
   }
 
   let productsList = categorySelected.category === null
@@ -32,11 +31,11 @@ function App (): JSX.Element {
     })
   }
 
-  if (filterSize !== null) {
-    productsList = productsList.filter((product) => {
-      return product.size === filterSize?.value
-    })
-  }
+  // if (filterSize !== null) {
+  //   productsList = productsList.filter((product) => {
+  //     return product.size === filterSize?.value
+  //   })
+  // }
 
   return (
     <div className='flex flex-col'>
