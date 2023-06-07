@@ -22,7 +22,7 @@ const CartProductCard: React.FC<Props> = ({ product }) => {
   }
 
   return (
-        <div className='flex flex-row justify-between w-full p-4 rounded-lg shadow-lg border border-gray-100'>
+        <div className='flex flex-row justify-between w-full p-4 rounded-lg shadow-lg border border-gray-200'>
             <div className='flex flex-row'>
               <img
               src={product.imgs[0]}
