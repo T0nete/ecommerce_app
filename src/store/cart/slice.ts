@@ -41,10 +41,9 @@ export const cartSlice = createSlice({
       )
       if (existingProductIndex !== -1) {
         const deleteLastProduct = state[existingProductIndex].quantity === 1
-        console.log(existingProductIndex)
-        console.log(deleteLastProduct)
+
         if (deleteLastProduct) {
-          return state.slice(existingProductIndex, 1)
+          return state.filter((_, index) => index !== existingProductIndex)
         }
 
         return state.map((product, index) =>
