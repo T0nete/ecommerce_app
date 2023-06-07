@@ -33,7 +33,9 @@ export const cartSlice = createSlice({
       }
     },
     deleteProductCart: (state, action: PayloadAction<ProductCart>) => {
-      return state.filter((product) => product.id === action.payload.id && product.size === action.payload.size)
+      return state.filter(
+        (product) => product.id !== action.payload.id || product.size !== action.payload.size
+      )
     },
     removeOneProductCart: (state, action: PayloadAction<ProductCart>) => {
       const existingProductIndex = state.findIndex((product) =>

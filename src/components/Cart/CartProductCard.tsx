@@ -1,6 +1,5 @@
 import React from 'react'
 import QuantityInput from './QuantityInput'
-import PriceDetail from './PriceDetail'
 import { useAppDispatch } from '../../hooks/store'
 import { type ProductCart } from '../../store/cart/slice'
 import { addProductCart, removeOneProductCart, deleteProductCart } from '../../store/cart/slice'
@@ -23,8 +22,7 @@ const CartProductCard: React.FC<Props> = ({ product }) => {
   }
 
   return (
-    <div className='flex flex-row p-2'>
-        <div className='flex flex-row justify-between w-full'>
+        <div className='flex flex-row justify-between w-full p-4 rounded-lg shadow-lg border border-gray-100'>
             <div className='flex flex-row'>
               <img
               src={product.imgs[0]}
@@ -55,8 +53,6 @@ const CartProductCard: React.FC<Props> = ({ product }) => {
           <div className='flex font-bold text-lg items-center justify-center'>
               <h3 className='text-center'>${product.price}</h3>
           </div>
-      </div>
-      <PriceDetail />
     </div>
   )
 }
