@@ -3,13 +3,15 @@ import categoriesReducer from './categories/slice'
 import filtersReducer from '../store/filters/slice'
 import screenSizeReducer from '../store/screenSize/slice'
 import wishListProductsReducer from '../store/wishList/slice'
+import cartReducer from '../store/cart/slice'
 
 export const store = configureStore({
   reducer: {
     categories: categoriesReducer,
     filters: filtersReducer,
     screenSize: screenSizeReducer,
-    wishListProducts: wishListProductsReducer
+    wishListProducts: wishListProductsReducer,
+    cart: cartReducer
   }
 })
 

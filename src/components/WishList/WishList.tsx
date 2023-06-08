@@ -16,7 +16,7 @@ const WishList: React.FC = () => {
       </div>
       <main className='h-full w-full flex justify-center items-center'>
           <div className='flex flex-col w-full'>
-            <h3 className='text-left font-extrabold text-3xl p-4'>Wish List</h3>
+            <h1 className='text-left font-extrabold text-3xl p-4'>Wish List</h1>
             <ProductList productsList={wishListProducts} isWishList={true}/>
           </div>
         </main>
