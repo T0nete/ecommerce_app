@@ -24,7 +24,7 @@ const Cart: React.FC = () => {
       </div>
       <main className='h-full w-full flex flex-col justify-center items-center'>
           <div className='flex flex-col min-w-[80%]'>
-            <h1 className='text-left font-extrabold text-3xl p-4'>Cart <span>({productsCart.length})</span></h1>
+            <h1 className='text-left font-extrabold text-3xl py-4'>Cart <span>({productsCart.length})</span></h1>
             <div className='flex flex-row w-full'>
               {/* <div className='flex flex-col  w-full'> */}
               <div className={`flex flex-col ${!renderInCol() ? 'w-8/12' : 'w-full'}`}>
@@ -49,15 +49,15 @@ const Cart: React.FC = () => {
                 )
               }
             </div>
-          </ div>
           {
             renderInCol() &&
             (
-              <div className='min-w-[60%] p-2'>
+              <div className='min-w-max[60%] p-2'>
                 <PriceDetail productsCart={productsCart} />
               </div>
             )
           }
+          </ div>
       </main>
     </div>
   )

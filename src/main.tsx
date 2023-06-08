@@ -8,6 +8,7 @@ import './index.css'
 import ProductDetail from './components/ProductDetail/ProductDetail'
 import WishList from './components/WishList/WishList'
 import Cart from './components/Cart/cart'
+import Checkout from './components/Checkout/Checkout.tsx'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
@@ -18,6 +19,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
           <Route path='/product/:id' element={<ProductDetail />} />
           <Route path='/wishlist' element={<WishList />} />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/checkout' element={<Checkout />} />
         </Routes>
       </Router>
     </Provider>

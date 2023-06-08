@@ -1,5 +1,6 @@
 import React from 'react'
 import { type ProductCart } from '../../store/cart/slice'
+import { Link } from 'react-router-dom'
 
 interface Props {
   productsCart: ProductCart[]
@@ -31,9 +32,21 @@ const PriceDetail: React.FC<Props> = ({ productsCart }) => {
           </div>
         </div>
         <div className='flex justify-center'>
-          <button className='rounded-full bg-indigo-500 p-2'>
-            <p className='text-white font-normal hover:font-bold transition-all duration-300'>Proceed to Checkout</p>
-          </button>
+          {
+            getTotalPrice > 0
+              ? <Link to='/checkout'>
+                  <button
+                    className='rounded-full bg-indigo-500 p-2'
+                  >
+                      <p className='text-white font-normal hover:font-bold transition-all duration-300'>Proceed to Checkout</p>
+                  </button>
+                </Link>
+              : <button
+                className='rounded-full bg-indigo-500 p-2'
+              >
+                  <p className='text-white font-normal hover:font-bold transition-all duration-300'>Proceed to Checkout</p>
+              </button>
+          }
         </div>
     </div>
   )
