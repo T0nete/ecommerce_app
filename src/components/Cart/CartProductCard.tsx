@@ -50,7 +50,7 @@ const CartProductCard: React.FC<Props> = ({ product }) => {
                 </button>
               </div>
           </div>
-          <div className='flex font-bold text-lg items-center justify-center'>
+          <div className='flex font-bold text-lg items-start sm:items-center center'>
               <h3 className='text-center'>${product.price}</h3>
           </div>
     </div>

@@ -23,7 +23,7 @@ const Cart: React.FC = () => {
         <Header showMenu={false} isSmallScreen={isSmallScreen} />
       </div>
       <main className='h-full w-full flex flex-col justify-center items-center'>
-          <div className='flex flex-col min-w-[80%]'>
+          <div className={`flex flex-col ${renderInCol() ? 'w-10/12' : 'w-8/12'}`}>
             <h1 className='text-left font-extrabold text-3xl py-4'>Cart <span>({productsCart.length})</span></h1>
             <div className='flex flex-row w-full'>
               {/* <div className='flex flex-col  w-full'> */}
@@ -33,7 +33,7 @@ const Cart: React.FC = () => {
                     return <div
                       key={product.id.toString() + '_' + product.size}
                     >
-                      <div className='flex flex-row py-2 px-4'>
+                      <div className='flex flex-row p-2'>
                         <CartProductCard product={product} />
                       </div>
                    </div>
@@ -43,7 +43,7 @@ const Cart: React.FC = () => {
               {
                 !renderInCol() &&
                 (
-                  <div className='w-4/12'>
+                  <div className='w-4/12 p-2'>
                     <PriceDetail productsCart={productsCart}/>
                   </div>
                 )

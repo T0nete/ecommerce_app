@@ -22,16 +22,16 @@ const Checkout: React.FC = () => {
       <Header showMenu={false} isSmallScreen={isSmallScreen} />
     </div>
     <main className='h-full w-full flex flex-col justify-center items-center'>
-        <div className='flex flex-col min-w-[80%]'>
+          <div className={`flex flex-col ${renderInCol() ? 'w-10/12' : 'w-8/12'}`}>
             <h1 className='text-left font-extrabold text-3xl py-4'>Checkout</h1>
             <div className='flex flex-row w-full'>
-                <div className='w-7/12'>
+                <div className={`${!renderInCol() ? 'w-7/12' : 'w-full'} p-2` }>
                     <AdressForm />
                 </div>
                 {
                     !renderInCol() &&
                     (
-                        <div className='w-5/12'>
+                        <div className='w-5/12 p-2'>
                             <OrderSummary />
                         </div>
                     )
@@ -41,7 +41,9 @@ const Checkout: React.FC = () => {
             {
                 renderInCol() &&
                 (
-                    <OrderSummary />
+                    <div className='w-full p-2 m-auto'>
+                        <OrderSummary />
+                    </div>
                 )
             }
         </ div>

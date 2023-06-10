@@ -11,29 +11,29 @@ const OrderSummary: React.FC = () => {
 
   return (
     <div className='flex flex-col w-full p-4 rounded-lg shadow-lg border border-gray-200'>
-        <h1 className='text-start text-lg font-semibold pb-4'>Order Summary</h1>
+        <h1 className='text-center text-lg font-bold pb-4'>Order Summary</h1>
         <div className='flex flex-col divide-y-2'>
             <div className='pb-4'>
                 {
                     productsCart.map((product) => {
                       return (
-                            <li
-                                className='list-none p-2 flex flex-row items-center justify-between'
-                                key={product.id.toString() + '_' + product.size}
-                            >
-                                <div className='flex flex-row'>
-                                    <img
-                                        src={product.imgs[0]}
-                                        alt={product.name}
-                                        className='h-20 rounded'
-                                    />
-                                    <div className='flex flex-col px-2 justify-center'>
-                                        <p className='font-semibold'>{product.name} <span className='font-normal text-sm'>({product.size})</span></p>
-                                        <p className='font-semibold'>${product.price}</p>
-                                    </div>
+                        <li
+                            className='list-none p-2 flex flex-row items-center justify-between'
+                            key={product.id.toString() + '_' + product.size}
+                        >
+                            <div className='flex flex-row'>
+                                <img
+                                    src={product.imgs[0]}
+                                    alt={product.name}
+                                    className='h-24 rounded'
+                                />
+                                <div className='flex flex-col px-2 justify-center'>
+                                    <p className='font-semibold'>{product.name} <span className='font-normal text-sm'>({product.size})</span></p>
+                                    <p className='font-semibold'>${product.price}</p>
                                 </div>
-                                <p className='font-semibold'>x{product.quantity}</p>
-                            </li>
+                            </div>
+                            <p className='font-semibold'>x{product.quantity}</p>
+                        </li>
                       )
                     })
                 }
