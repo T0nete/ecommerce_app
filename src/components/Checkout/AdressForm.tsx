@@ -1,24 +1,9 @@
-import React, { type ChangeEvent, useRef, type FormEvent, useState } from 'react'
+import React, { useRef, type FormEvent, useState } from 'react'
 import InputForm from './InputForm'
 
-// interface AdressFormType {
-//   fullName: string
-//   errorFullName: boolean
-//   mobilePhone: string
-//   errorMobilePhone: boolean
-//   email: string
-//   errorEmail: boolean
-//   direction: string
-//   errorDirection: boolean
-//   townCity: string
-//   errorTownCity: boolean
-//   postalCode: number
-//   errorPostalCode: boolean
-// }
+export type AddressFormType = Record<string, string>
 
-type AdressFormType = Record<string, string>
-
-const initialState: AdressFormType = {
+const initialState: AddressFormType = {
   fullName: '',
   mobilePhone: '',
   email: '',
@@ -58,14 +43,8 @@ const errorsFormInitialValue: ErrorsFormType = {
 }
 
 const AdressForm: React.FC = () => {
-  const inputForm = useRef<AdressFormType>(initialState)
+  const inputForm = useRef<AddressFormType>(initialState)
   const [renderErrors, setErrors] = useState(errorsFormInitialValue)
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    const { name, value } = e.target
-    console.log('handleChange')
-    inputForm.current[name] = value.trim()
-  }
 
   const validateForm = (fullName: string, mobilePhone: string, email: string, direction: string, townCity: string, postalCode: string): ErrorsFormType => {
     const errors: ErrorsFormType = errorsFormInitialValue
@@ -131,6 +110,21 @@ const AdressForm: React.FC = () => {
     setErrors({ ...errors })
   }
 
+  const handleInputChange = (name: string, value: string): void => {
+    inputForm.current[name] = value
+  }
+
+  // const handleFillDummyValues = (): void => {
+  //   inputForm.current = {
+  //     fullName: 'Toni Barrantes',
+  //     mobilePhone: '123456789',
+  //     email: 'tonibarrantes@example.com',
+  //     direction: 'Street 1',
+  //     townCity: 'Barcelona',
+  //     postalCode: '08080'
+  //   }
+  // }
+
   return (
     <div className='flex flex-col w-full p-4 rounded-lg shadow-lg border border-gray-200'>
         <h1 className='text-start text-lg font-bold'>Adress</h1>
@@ -138,83 +132,79 @@ const AdressForm: React.FC = () => {
           <div className=''>
             <div className='flex py-2'>
               <div className='flex flex-col w-1/2 px-2'>
-                <InputForm type={'text'} value={inputForm.current.fullName} renderErrors={renderErrors.fullName} messageError={renderErrors.messageErrorFullName} handleChange={handleChange} />
-                {/* <label className=' font-semibold pb-2' htmlFor='fullName'>Full Name</label>
-                <input
-                  type='text'
-                  name='fullName'
-                  className={`border ${!renderErrors.fullName ? 'border-gray-300' : 'border-red-500'} rounded-md p-1  focus:border-indigo-500 outline-none`}
-                  onChange={handleChange}
+                <InputForm
+                  label={'Full Name'}
+                  name={'fullName'}
+                  type={'text'}
+                  renderErrors={renderErrors.fullName}
+                  messageError={renderErrors.messageErrorFullName}
+                  onInputChange={handleInputChange}
                 />
-                {
-                  renderErrors.fullName &&
-                  <p className='text-red-500 text-xs p-1'>{renderErrors.messageErrorFullName}</p>
-                } */}
               </div>
               <div className='flex flex-col w-1/2 px-2'>
-                <label className=' font-semibold pb-2' htmlFor='mobilePhone'>Mobile No.</label>
-                <input
-                  type='number'
-                  name='mobilePhone'
-                  className={`border ${!renderErrors.mobilePhone ? 'border-gray-300' : 'border-red-500'} rounded-md p-1  focus:border-indigo-500 outline-none`}
-                  onChange={handleChange}
+                <InputForm
+                  label={'Mobile Phone'}
+                  name={'mobilePhone'}
+                  type={'number'}
+                  renderErrors={renderErrors.mobilePhone}
+                  messageError={renderErrors.messageErrorMobilePhone}
+                  onInputChange={handleInputChange}
                 />
-                {
-                  renderErrors.mobilePhone &&
-                  <p className='text-red-500 text-xs p-1'>{renderErrors.messageErrorMobilePhone}</p>
-                }
               </div>
             </div>
             <div className='flex flex-col w-full py-2 px-2'>
-              <label className=' font-semibold pb-2' htmlFor='email'>Email</label>
-              <input
-                type='email'
-                name='email'
-                className={`border ${!renderErrors.email ? 'border-gray-300' : 'border-red-500'} rounded-md p-1  focus:border-indigo-500 outline-none`}
-                onChange={handleChange}
+              <InputForm
+                label={'Email'}
+                name={'email'}
+                type={'email'}
+                renderErrors={renderErrors.email}
+                messageError={renderErrors.messageErrorEmail}
+                onInputChange={handleInputChange}
               />
-              {
-                renderErrors.email &&
-                <p className='text-red-500 text-xs p-1'>{renderErrors.messageErrorEmail}</p>
-              }
             </div>
             <div className='flex flex-col w-full py-2 px-2'>
-              <label className=' font-semibold pb-2' htmlFor='direction'>Direction</label>
-              <input
-                type='text'
-                name='direction'
-                className={`border ${!renderErrors.direction ? 'border-gray-300' : 'border-red-500'} rounded-md p-1  focus:border-indigo-500 outline-none`}
-                onChange={handleChange}
+              <InputForm
+                label={'Direction'}
+                name={'direction'}
+                type={'text'}
+                renderErrors={renderErrors.direction}
+                messageError={renderErrors.messageErrorDirection}
+                onInputChange={handleInputChange}
               />
             </div>
             <div className='flex py-2'>
               <div className='flex flex-col w-1/2 px-2'>
-                <label className=' font-semibold pb-2' htmlFor='townCity'>Town/City</label>
-                <input
-                  type='text'
-                  name='townCity'
-                  className={`border ${!renderErrors.townCity ? 'border-gray-300' : 'border-red-500'} rounded-md p-1  focus:border-indigo-500 outline-none`}
-                  onChange={handleChange}
+                <InputForm
+                  label={'Town/City'}
+                  name={'townCity'}
+                  type={'text'}
+                  renderErrors={renderErrors.townCity}
+                  messageError={renderErrors.messageErrorTownCity}
+                  onInputChange={handleInputChange}
                 />
               </div>
               <div className='flex flex-col w-1/2 px-2'>
-                <label className=' font-semibold pb-2' htmlFor='postalCode'>Postal Code</label>
-                <input
-                  type='number'
-                  name='postalCode'
-                  className={`border ${!renderErrors.postalCode ? 'border-gray-300' : 'border-red-500'} rounded-md p-1  focus:border-indigo-500 outline-none`}
-                  onChange={handleChange}
+                <InputForm
+                  label={'Postal Code'}
+                  name={'postalCode'}
+                  type={'number'}
+                  renderErrors={renderErrors.postalCode}
+                  messageError={renderErrors.messageErrorPostalCode}
+                  onInputChange={handleInputChange}
                 />
               </div>
             </div>
               <div className='flex p-4 justify-evenly'>
-                <button
+                {/* <button
                   type='submit'
                   className='border border-gray-400 rounded-full p-2'
+                  onClick={handleFillDummyValues}
                 >
                   Fill dummy values
-                </button>
-                <button type='submit' className='bg-indigo-500 rounded-full p-2 font-semibold text-md text-white'>
+                </button> */}
+                <button
+                  type='submit'
+                  className='w-1/2 items-center align bg-indigo-500 rounded-full p-2 text-white font-normal hover:text-lg hover:font-bold transition-all duration-300'>
                   Place Order
                 </button>
               </div>
